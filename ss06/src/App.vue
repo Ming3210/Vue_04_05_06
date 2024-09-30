@@ -36,21 +36,21 @@ import { ref, computed } from "vue";
 const newTask = ref("");
 const tasks = ref([]);
 
-const onMounted = () => {
+const getJob = () => {
   const savedTasks = localStorage.getItem("tasks");
   if (savedTasks) {
     tasks.value = JSON.parse(savedTasks);
   }
 };
 
-onMounted();
+getJob();
 
 const saveTasksToLocalStorage = () => {
   localStorage.setItem("tasks", JSON.stringify(tasks.value));
 };
 
 const addTask = () => {
-  if (!newTask.value.trim()) {
+  if (!newTask.value != "") {
     alert("Tên công việc không được để trống");
     return;
   }
@@ -62,7 +62,7 @@ const addTask = () => {
   }
 
   tasks.value.push({
-    id: Date.now(),
+    id: Math.ceil(Math.random() * 9999999),
     name: newTask.value,
     status: false,
   });
