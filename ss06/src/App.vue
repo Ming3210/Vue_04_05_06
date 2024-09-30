@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 
 const newTask = ref("");
 const tasks = ref([]);
